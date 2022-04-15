@@ -3577,7 +3577,7 @@ function or(l, r)
 }
 
 self.C3_ExpressionFuncs = [
-		() => "ws://my-app-fsd5h.ondigitalocean.app",
+		() => "wss://my-app-fsd5h.ondigitalocean.app",
 		() => "",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
