@@ -3469,6 +3469,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Text,
 		C3.Plugins.System.Cnds.OnLayoutStart,
 		C3.Plugins.C2WebSocket.Acts.Connect,
+		C3.ScriptsInEvents.EventSheet1_Event1_Act2,
 		C3.Plugins.C2WebSocket.Cnds.OnMessage,
 		C3.Plugins.Text.Acts.SetText,
 		C3.Plugins.C2WebSocket.Exps.MessageText
