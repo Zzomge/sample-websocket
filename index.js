@@ -1,33 +1,21 @@
-'use strict';
+var mysql = require('mysql');
 
-const express = require('express');
-const path = require('path');
-const { createServer } = require('http');
-
-const WebSocket = require('ws');
-
-const app = express();
-app.use(express.static(path.join(__dirname, '/public')));
-
-const server = createServer(app);
-const wss = new WebSocket.Server({ server });
-
-wss.on('connection', function (ws) {
-  const id = setInterval(function () {
-    ws.send(JSON.stringify(process.memoryUsage()), function () {
-      //
-      // Ignore errors.
-      //
-    });
-  }, 100);
-  console.log('started client interval');
-
-  ws.on('close', function () {
-    console.log('stopping client interval');
-    clearInterval(id);
-  });
+var con = mysql.createConnection({
+  host: "db-mysql-sgp1-15496-do-user-9581486-0.b.db.ondigitalocean.com",
+  user: "doadmin",
+  password: "AVNS_yc5Fdf3hPsCczn-",
+  port: 25060,
+  dialect: 'mysql',
+  force: true,
+  ssl: { cert: fs.readFileSync(__dirname + '/ca-certificate.crt'),}
 });
 
-server.listen(8080, function () {
-  console.log('Listening on http://0.0.0.0:8080');
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+  /*Create a database named "mydb":*/
+  con.query("CREATE DATABASE gamedb", function (err, result) {
+    if (err) throw err;
+    console.log("Database created");
+  });
 });
